@@ -24,13 +24,13 @@ const Hero = () => {
 
 
   return (
-    <section className='w-full nav-height bg-black relative'>
+    <section className='w-full nav-height bg-black '>
         <div className='md:h-4/6 h-5/6 w-full flex-center flex-col'>
             <p className='hero-title'>
                 iPhone 15 pro
             </p>
             <div className='lg:w-9/12 w-7/12'>
-                <video className='pointer-events-none' autoPlay muted playsInline={true} key={videoSrc}>
+                <video className='pointer-events-none' autoPlay loop muted playsInline={true} key={videoSrc}>
                     <source src={videoSrc} type='video/mp4' />
                 </video>
             </div>
