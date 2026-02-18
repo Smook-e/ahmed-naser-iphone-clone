@@ -5,6 +5,7 @@
   --color-gray: #86868b;
   --color-gray-100: #94928d;
   --color-gray-200: #42424570;
+  --color-gray-300: #1C1C1C;
   --color-zinc: #101010;
   
 }
@@ -126,7 +127,7 @@
   }
 
   .video-carousel_container {
-    @apply  sm:w-[70vw] w-[88vw] md:h-[70vh] sm:h-[50vh] h-[35vh];
+    @apply  sm:w-[70vw] w-[88vw] md:h-[50vh] sm:h-[40vh] h-[20vh];
   }
 
   .g_fadeIn {

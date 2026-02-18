@@ -14,10 +14,10 @@ const Highlights = () => {
     <section id="highlights" className='w-screen overflow-hidden h-full common-padding bg-zinc '>
         <div className='screen-max-width'>
             <div className='flex  mb-12 w-full justify-between'>
-                <h1 id="title" className='section-heading'>
+                <h1 id="title" className='section-heading flex-1'>
                     Get the Highlight.
                 </h1>
-                <div className='flex flex-wrap items-center gap-5'>
+                <div className='flex flex-col md:flex-row items-center md:justify-end gap-5'>
                     <p className='link text-sm'>
                         Watch the film
                         <img src={watchImg} alt="watch" className='ml-2' />
