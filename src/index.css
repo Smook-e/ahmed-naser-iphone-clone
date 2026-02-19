@@ -44,7 +44,14 @@
     max-width: 1120px;
   }
 
+  html,
+body {
   
+  overflow-x: hidden;           /* prevents body-level horizontal scroll */
+  overscroll-behavior-x: none;  /* stops iOS/Android bounce overflow */
+}
+
+
 
   .nav-height {
     @apply h-[calc(100vh-60px)];

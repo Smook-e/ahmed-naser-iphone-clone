@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import React, { useEffect } from 'react'
 import ModelView from './ModelView'
 import { useState, useRef } from 'react'
-import {yellowImg} from '../utils'
+import { yellowImg } from '../utils'
 import * as THREE from 'three'
 import { Canvas } from '@react-three/fiber'
 import { View } from '@react-three/drei'
@@ -23,20 +23,20 @@ const Model = () => {
     const [smallRotation, setSmallRotation] = useState(0);
     const [largeRotation, setLargeRotation] = useState(0);
 
-    const small = useRef( new THREE.Group());
-    const large = useRef( new THREE.Group());
+    const small = useRef(new THREE.Group());
+    const large = useRef(new THREE.Group());
 
     const tl = gsap.timeline();
 
     useEffect(() => {
 
-        if(size === 'large') {
+        if (size === 'large') {
             animateWithGsap(tl, small, smallRotation, '#view1', '#view2', {
                 transform: 'translateX(-100%)',
                 duration: 1
             })
         }
-        if(size === 'small') {
+        if (size === 'small') {
             animateWithGsap(tl, large, largeRotation, '#view2', '#view1', {
                 transform: 'translateX(0%)',
                 duration: 1
@@ -60,18 +60,19 @@ const Model = () => {
             duration: 1,
             scrollTrigger: {
                 trigger: '#heading',
-    }
-        })}, [])
-  return (
-    <section className='common-padding'>
-        <div className='screen-max-width'>
-            <h1 id='heading' className='section-heading'>
-                Take a Closer look.
-            </h1>
-        </div>
+            }
+        })
+    }, [])
+    return (
+        <section className='common-padding'>
+            <div className='screen-max-width'>
+                <h1 id='heading' className='section-heading'>
+                    Take a Closer look.
+                </h1>
+            </div>
             <div className="flex flex-col items-center overflow-hidden mt-5">
-                <div className="w-full h-[75vh] overflow-hidden relative md:h-[90vh]">
-                    <ModelView 
+                <div className="w-full h-[60vh] overflow-hidden relative md:h-[90vh] **overflow-x-hidden**">
+                    <ModelView
                         index={1}
                         groupRef={small}
                         gsapType="view1"
@@ -80,37 +81,44 @@ const Model = () => {
                         item={model}
                         size={size}
                     />
-                    <ModelView 
-                            index={2}
-                            groupRef={large}
-                            gsapType="view2"
-                            controlRef={cameraControlLarge}
-                            setRotationState={setLargeRotation}
-                            item={model}
-                            size={size}
+                    <ModelView
+                        index={2}
+                        groupRef={large}
+                        gsapType="view2"
+                        controlRef={cameraControlLarge}
+                        setRotationState={setLargeRotation}
+                        item={model}
+                        size={size}
                     />
-                        <Canvas className="w-full h-full"
+                    <Canvas
                         style={{
                             position: 'fixed',
                             top: 0,
                             left: 0,
-                            bottom: 0,
-                            right: 0,
+                            width: '100%',
+                            height: '100vh',          // or '100%' if inside a full-height parent
                             overflow: 'hidden',
+                            pointerEvents: 'none',    // scroll passes through to HTML
+                                  // behind content if needed
+                            touchAction: 'none',
                         }}
-                        eventSource={document.getElementById('root')}
-                        >
-                            <View.Port/>
-                        </Canvas>
+                        // Let it update on scroll but calm it down to reduce jitter
+                        resize={{ debounce: { scroll: 50, resize: 0 } }}  // or try without resize prop
+                        gl={{ antialias: true }}
+                        dpr={[1, 1.5]}
+                    // eventSource={document.getElementById('root')}  // ← remove temporarily to test
+                    >
+                        <View.Port />
+                    </Canvas>
                 </div>
                 <div className='mx-auto w-full'>
                     <p className='text-sm font-light text-center mb-3'> {model.title}</p>
 
                     <div className='flex-center'>
                         <ul className='color-container'>
-                            {models.map((item,i) => (
+                            {models.map((item, i) => (
                                 <li key={i} style={
-                                    {backgroundColor: item.color[0]}
+                                    { backgroundColor: item.color[0] }
                                 } className={`w-6 h-6 rounded-full mx-2 cursor-pointer ${item == model ? ' ring-2 border-2 border-black' : ''}`} onClick={() => setModel(item)}>
 
                                 </li>
@@ -130,8 +138,8 @@ const Model = () => {
                     </div>
                 </div>
             </div>
-    </section>
-  )
+        </section>
+    )
 }
 
 export default Model
