@@ -1,7 +1,12 @@
 import React from 'react'
 import { useRef, useState, useEffect } from 'react'
 import gsap from 'gsap'
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 import { useGSAP } from '@gsap/react'
+
 import { hightlightsSlides } from "../constants";
 import { pauseImg, playImg } from "../utils";
 const Imagecarousel = () => {
@@ -9,7 +14,7 @@ const Imagecarousel = () => {
     const progressRef = useRef([]);
     const progressTween = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [isPaused, setIsPaused] = useState(false);
+    const [isPaused, setIsPaused] = useState(true);
 
 
     useEffect(() => {
@@ -31,14 +36,23 @@ const Imagecarousel = () => {
             duration: 1,
             ease: "power2.inOut",
         })
+        gsap.to('.slider', {
+            scrollTrigger: {
+                trigger: '.slider',
+                start: 'top 80%',
+            },
+            onComplete: () => {
+                setIsPaused(false);
+            }
+        })
     }, [currentIndex]);
     useGSAP(() => {
         gsap.killTweensOf(progressRef.current);
 
         // Reset all dots to 0%
         gsap.set(progressRef.current, { width: "0%" });
-        progressTween.current = gsap.fromTo(progressRef.current[currentIndex],
-            { width: "0%" },
+        progressTween.current = gsap.to(progressRef.current[currentIndex],
+            
             {
                 width: "100%", duration: hightlightsSlides[currentIndex].videoDuration, ease: "none", paused: false, onComplete: () => {
                     setCurrentIndex(prev => (prev + 1) % hightlightsSlides.length);
@@ -104,7 +118,7 @@ const Imagecarousel = () => {
                         >
                             <div
                                 ref={el => progressRef.current[index] = el}
-                                className="absolute h-full left-0 rounded-full bg-gray-800"
+                                className="absolute h-full left-0 rounded-full bg-gray-800 w-0"
 
                             />
                         </div>
