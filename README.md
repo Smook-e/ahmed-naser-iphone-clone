@@ -10,9 +10,8 @@ A modern, interactive clone of Apple's iPhone 15 Pro landing page built to pract
 [Live Demo](https://ahmed-naser-iphone-clone.vercel.app/)
 
 ## 📸 Preview
-<!-- Add screenshots or gifs here -->
-![Project Preview](<img width="2498" height="1357" alt="image" src="https://github.com/user-attachments/assets/fe7c1219-35f2-4996-90a9-494994ad0324" />
-)
+<img width="2498" height="1357" alt="image" src="https://github.com/user-attachments/assets/4dcce89b-4605-4a6b-8238-60094cc84e5a" />
+
 
 ---
 
