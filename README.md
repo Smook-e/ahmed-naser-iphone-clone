@@ -11,7 +11,8 @@ A modern, interactive clone of Apple's iPhone 15 Pro landing page built to pract
 
 ## 📸 Preview
 <!-- Add screenshots or gifs here -->
-![Project Preview](./public/preview.png)
+![Project Preview](<img width="2498" height="1357" alt="image" src="https://github.com/user-attachments/assets/fe7c1219-35f2-4996-90a9-494994ad0324" />
+)
 
 ---
 
