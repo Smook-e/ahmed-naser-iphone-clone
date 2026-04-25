@@ -1,4 +1,8 @@
-# 🍎 iPhone 15 Pro Landing Page Clone
+#  iPhone 15 Pro Landing Page Clone
+![React](https://img.shields.io/badge/React-20232A?logo=react)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite)
+![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?logo=tailwindcss)
+![GSAP](https://img.shields.io/badge/GSAP-88CE02)
 
 A modern, interactive clone of Apple's iPhone 15 Pro landing page built to practice advanced front-end animation, 3D product visualization, and responsive UI development.
 
