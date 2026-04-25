@@ -7,7 +7,7 @@
 A modern, interactive clone of Apple's iPhone 15 Pro landing page built to practice advanced front-end animation, 3D product visualization, and responsive UI development.
 
 ## 🚀 Demo
-[Live Demo](your-deployment-link-here)
+[Live Demo](https://ahmed-naser-iphone-clone.vercel.app/)
 
 ## 📸 Preview
 <!-- Add screenshots or gifs here -->
@@ -97,43 +97,3 @@ This project helped me work on:
 
 ---
 
-## 💡 Inspiration
-
-Inspired by Apple's official iPhone 15 Pro product page and built for educational purposes.
-
----
-
-## 📈 Future Improvements
-
-- [ ] Add more Apple-style transitions
-- [ ] Improve accessibility
-- [ ] Add dark/light mode
-- [ ] Optimize 3D rendering performance
-- [ ] Add more device color variants
-
----
-
-## 🤝 Contributing
-
-Pull requests and suggestions are welcome.
-
-```bash
-Fork the repo
-Create a branch
-Commit changes
-Open a PR
-```
-
----
-
-## 📄 License
-
-This project is for educational purposes only.
-
----
-
-## 👨‍💻 Author
-
-Built by **Smook-e**
-
-GitHub: https://github.com/Smook-e
