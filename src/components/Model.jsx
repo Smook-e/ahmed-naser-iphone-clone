@@ -30,7 +30,7 @@ const Model = () => {
     const large = useRef(new THREE.Group());
 
     const tl = gsap.timeline();
-    const LazyCanvas = lazy(() => import('./LazyCanvas'));
+    
     useEffect(() => {
 
         if (size === 'large') {
