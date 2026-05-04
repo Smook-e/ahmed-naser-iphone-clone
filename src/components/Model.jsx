@@ -10,6 +10,8 @@ import { View } from '@react-three/drei'
 import { models } from '../constants'
 import { sizes } from '../constants'
 import { animateWithGsap } from '../constants/animations'
+import { useGLTF } from '@react-three/drei'
+import { Preload, AdaptiveDpr } from '@react-three/drei'
 const Model = () => {
     const [size, setSize] = useState('small');
     const [model, setModel] = useState({
@@ -72,44 +74,51 @@ const Model = () => {
             </div>
             <div className="flex flex-col items-center overflow-hidden ">
                 <div className="w-full h-[50vh] overflow-hidden relative md:h-[90vh] **overflow-x-hidden**">
-                    <ModelView
-                        index={1}
-                        groupRef={small}
-                        gsapType="view1"
-                        controlRef={cameraControlSmall}
-                        setRotationState={setSmallRotation}
-                        item={model}
-                        size={size}
-                    />
-                    <ModelView
-                        index={2}
-                        groupRef={large}
-                        gsapType="view2"
-                        controlRef={cameraControlLarge}
-                        setRotationState={setLargeRotation}
-                        item={model}
-                        size={size}
-                    />
-                    <Canvas
-                        style={{
-                            position: 'fixed',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100vh',          // or '100%' if inside a full-height parent
-                            overflow: 'hidden',
-                            pointerEvents: 'none',    // scroll passes through to HTML
-                                  // behind content if needed
-                            touchAction: 'none',
-                        }}
-                        // Let it update on scroll but calm it down to reduce jitter
-                        resize={{ debounce: { scroll: 50, resize: 0 } }}  // or try without resize prop
-                        gl={{ antialias: true }}
-                        dpr={[1, 1.5]}
-                    // eventSource={document.getElementById('root')}  // ← remove temporarily to test
-                    >
-                        <View.Port />
-                    </Canvas>
+                    <Suspense fallback={null}>
+
+                        <ModelView
+                            index={1}
+                            groupRef={small}
+                            gsapType="view1"
+                            controlRef={cameraControlSmall}
+                            setRotationState={setSmallRotation}
+                            item={model}
+                            size={size}
+                        />
+                        <ModelView
+                            index={2}
+                            groupRef={large}
+                            gsapType="view2"
+                            controlRef={cameraControlLarge}
+                            setRotationState={setLargeRotation}
+                            item={model}
+                            size={size}
+                        />
+                        <Canvas
+                            style={{
+                                position: 'fixed',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: '100vh',          // or '100%' if inside a full-height parent
+                                overflow: 'hidden',
+                                pointerEvents: 'none',    // scroll passes through to HTML
+                                // behind content if needed
+                                touchAction: 'none',
+                            }}
+                            // Let it update on scroll but calm it down to reduce jitter
+                            resize={{ debounce: { scroll: 50, resize: 0 } }}
+                            // or try without resize prop
+                            eventSource={document.getElementById('root')}
+                            gl={{ antialias: true, powerPreference: "high-performance" }}
+                            dpr={[1, 2]}
+                        // eventSource={document.getElementById('root')}  // ← remove temporarily to test
+                        >
+                            <View.Port />
+                            <AdaptiveDpr pixelated /> {/* Drops quality during movement to stay at 60fps */}
+                            <Preload all /> {/* Uploads textures to GPU early */}
+                        </Canvas>
+                    </Suspense>
                 </div>
                 <div className='mx-auto w-full'>
                     <p className='text-sm font-light text-center mb-3'> {model.title}</p>

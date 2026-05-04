@@ -6,7 +6,7 @@ import { gsapScrollTrigger } from '../constants/animations';
 
 const HowItWorks = () => {
     const videoRef = useRef();
-
+    
     useGSAP(() => {
         gsap.from('#chip', {
             scrollTrigger: {

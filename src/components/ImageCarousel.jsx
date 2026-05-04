@@ -10,13 +10,40 @@ import { useGSAP } from '@gsap/react'
 import { hightlightsSlides } from "../constants";
 import { pauseImg, playImg } from "../utils";
 const Imagecarousel = () => {
-    
+
     const progressRef = useRef([]);
     const progressTween = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(true);
+    // const [isIntersecting, setIsIntersecting] = useState(false);
+    const videoRef = useRef([]);
 
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const video = entry.target;
+                    const source = video.querySelector("source");
 
+                    // 1. Move the URL from data-src to src
+                    if (source && source.dataset.src) {
+                        source.src = source.dataset.src;
+                        video.load();
+
+                    }
+                    
+                    observer.unobserve(video);
+                }
+            });
+        });
+
+        // Observe each element in the array
+        videoRef.current.forEach((video) => {
+            if (video) observer.observe(video);
+        });
+
+        return () => observer.disconnect();
+    }, []);
     useEffect(() => {
         if (isPaused) {
             progressTween.current?.pause();
@@ -29,7 +56,7 @@ const Imagecarousel = () => {
         , [isPaused, currentIndex]);
     const [loadedData, setLoadedData] = useState([]);
 
-    const videoRef = useRef([]);
+
     useGSAP(() => {
         gsap.to('.slider', {
             transform: `translateX(${-100 * currentIndex}%)`,
@@ -52,7 +79,7 @@ const Imagecarousel = () => {
         // Reset all dots to 0%
         gsap.set(progressRef.current, { width: "0%" });
         progressTween.current = gsap.to(progressRef.current[currentIndex],
-            
+
             {
                 width: "100%", duration: hightlightsSlides[currentIndex].videoDuration, ease: "none", paused: false, onComplete: () => {
                     setCurrentIndex(prev => (prev + 1) % hightlightsSlides.length);
@@ -80,16 +107,17 @@ const Imagecarousel = () => {
 
                             <div className=" aspect-video h-full w-full rounded-3xl bg-black  flex items-center overflow-hidden justify-center ">
                                 <video
+                                    class="lazy-video"
                                     id="video"
                                     playsInline={true}
                                     className={`pointer-events-none `}
-                                    preload="auto"
+                                    preload="none"
                                     muted
                                     ref={(el) => (videoRef.current[index] = el)}
 
                                     onLoadedMetadata={(e) => handleLoadedMetaData(index, e)}
                                 >
-                                    <source src={item.video} type="video/mp4" />
+                                    <source data-src={item.video} type="video/mp4" />
                                 </video>
                             </div>
                             <div className="absolute md:top-12 top-2 left-[5%] z-10">

@@ -7,6 +7,7 @@ import Iphone from './Iphone'
 
 import { OrbitControls } from '@react-three/drei'
 import Loader from './Loader'
+import { useGLTF } from '@react-three/drei'
 
 const ModelView = ({index, groupRef, gsapType, controlRef, setRotationState, item, size}) => {
 
