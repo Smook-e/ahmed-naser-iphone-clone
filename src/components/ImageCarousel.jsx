@@ -107,7 +107,7 @@ const Imagecarousel = () => {
 
                             <div className=" aspect-video h-full w-full rounded-3xl bg-black  flex items-center overflow-hidden justify-center ">
                                 <video
-                                    class="lazy-video"
+                                    
                                     id="video"
                                     playsInline={true}
                                     className={`pointer-events-none `}

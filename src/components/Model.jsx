@@ -12,6 +12,7 @@ import { sizes } from '../constants'
 import { animateWithGsap } from '../constants/animations'
 import { useGLTF } from '@react-three/drei'
 import { Preload, AdaptiveDpr } from '@react-three/drei'
+import { Suspense, lazy } from 'react'
 const Model = () => {
     const [size, setSize] = useState('small');
     const [model, setModel] = useState({
@@ -29,7 +30,7 @@ const Model = () => {
     const large = useRef(new THREE.Group());
 
     const tl = gsap.timeline();
-
+    const LazyCanvas = lazy(() => import('./LazyCanvas'));
     useEffect(() => {
 
         if (size === 'large') {

@@ -2,12 +2,12 @@ import {PerspectiveCamera, View } from '@react-three/drei'
 import * as THREE from 'three'
 import React , { useEffect } from 'react'
 import Lights from './Lights'
-import { Suspense } from 'react'
+import { Suspense, lazy } from 'react'
 import Iphone from './Iphone'
 
 import { OrbitControls } from '@react-three/drei'
 import Loader from './Loader'
-import { useGLTF } from '@react-three/drei'
+
 
 const ModelView = ({index, groupRef, gsapType, controlRef, setRotationState, item, size}) => {
 
