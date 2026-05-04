@@ -6,13 +6,12 @@ import Model from './components/Model'
 import Features from './components/Features'
 import HowItWorks from './components/HowItWorks'
 import Footer from './components/Footer'
-import { SpeedInsights } from "@vercel/speed-insights/react"
+
 function App() {
   
 
   return (
     <>
-      <SpeedInsights />
       <main className="bg-black">
         <NavBar />
         <Hero />
