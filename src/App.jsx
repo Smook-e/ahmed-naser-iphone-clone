@@ -6,13 +6,14 @@ import Model from './components/Model'
 import Features from './components/Features'
 import HowItWorks from './components/HowItWorks'
 import Footer from './components/Footer'
-
+import Gemma from './components/gemma'
 function App() {
   
 
   return (
     <>
       <main className="bg-black">
+        {/* <Gemma /> */}
         <NavBar />
         <Hero />
         <Highlights />

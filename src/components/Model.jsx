@@ -27,8 +27,8 @@ const Model = () => {
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true)
+                if (entry.isIntersecting) { //if section is visible
+                    setIsVisible(true) 
                     observer.disconnect() // Only trigger once
                 }
             },

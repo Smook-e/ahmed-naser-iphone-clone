@@ -6,6 +6,7 @@ const Footer = () => {
         <footer className="py-5 sm:px-10 px-5">
             <div className="screen-max-width">
                 <div>
+                    <h3 className="font-semibold text-gray text-xs">This is a fan-made clone for portfolio purposes. Not affiliated with Apple Inc.</h3>
                     <p className="font-semibold text-gray text-xs">
                         More ways to shop: {' '}
                         <span className="underline text-blue">
