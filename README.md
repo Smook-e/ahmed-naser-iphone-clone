@@ -24,6 +24,8 @@ A modern, interactive clone of Apple's iPhone 15 Pro landing page built to pract
 - GSAP-powered transitions
 - Product showcase sections
 - Performance-focused UI built with reusable components
+- <img width="1261" height="1119" alt="image" src="https://github.com/user-attachments/assets/0e1bd5dc-28a7-456f-a6bb-647c509255d8" />
+
 
 ---
 
