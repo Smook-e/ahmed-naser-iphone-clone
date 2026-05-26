@@ -36,7 +36,7 @@ const Hero = () => {
             </div>
         </div>
         <div id='cta'  className='flex flex-col items-center '>
-            <a href="#highlights" className='btn buy font-bold opacity-0 translate-y-20'>Buy</a>
+            <a href="#highlights" className='btn buy font-bold opacity-0 translate-y-20'>Learn more</a>
             <p className='font-normal  text-xl buy opacity-0 translate-y-20'>From $999</p>
         </div>
 
